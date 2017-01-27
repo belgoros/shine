@@ -20,25 +20,133 @@ var ng              = {
   platformBrowserDynamic: require("@angular/platform-browser-dynamic"),
   router:                 require("@angular/router")
 };
-//
+
+var RESULTS = [
+  {
+    first_name: "Pat",
+    last_name: "Smith",
+    username: "psmith",
+    email: "pat.smith@somewhere.net",
+    created_at: "2016-02-05",
+  },
+  {
+    first_name: "Patrick",
+    last_name: "Jones",
+    username: "pjpj",
+    email: "jones.p@business.net",
+    created_at: "2014-03-05",
+  },
+  {
+    first_name: "Patricia",
+    last_name: "Benjamin",
+    username: "pattyb",
+    email: "benjie@aol.info",
+    created_at: "2016-01-02",
+  },
+  {
+    first_name: "Patty",
+    last_name: "Patrickson",
+    username: "ppat",
+    email: "pppp@freemail.computer",
+    created_at: "2016-02-05",
+  },
+  {
+    first_name: "Jane",
+    last_name: "Patrick",
+    username: "janesays",
+    email: "janep@company.net",
+    created_at: "2013-01-05",
+  },
+];
+
+var CustomerSearchComponent = ng.core.Component({
+  selector: "shine-customer-search",
+  template: '\
+<header> \
+  <h1 class="h2">Customer Search</h1> \
+</header> \
+<section class="search-form"> \
+  <form> \
+    <div class="input-group input-group-lg"> \
+      <label for="keywords" class="sr-only">Keywords></label> \
+      <input type="text" id="keywords" name="keywords" \
+             placeholder="First Name, Last Name, or Email Address"\
+             class="form-control input-lg" \
+             bindon-ngModel="keywords"> \
+      <span class="input-group-btn"> \
+        <input type="submit" value="Find Customers"\
+               on-click="search()" \
+               class="btn btn-primary btn-lg">\
+      </span> \
+    </div> \
+  </form> \
+</section> \
+<section class="search-results"> \
+  <header> \
+    <h1 class="h3">Results</h1> \
+  </header> \
+  <ol class="list-group"> \
+    <li *ngFor="let customer of customers" \
+        class="list-group-item clearfix"> \
+      <h3 class="pull-right"> \
+        <small class="text-uppercase">Joined</small> \
+        {{customer.created_at}} \
+      </h3> \
+      <h2 class="h3"> \
+        {{customer.first_name}} {{customer.last_name}} \
+        <small>{{customer.username}}</small> \
+      </h2> \
+      <h4>{{customer.email}}</h4> \
+    </li> \
+  </ol> \
+</section> \
+  '
+}).Class({
+  constructor: function() {
+    this.customers = null;
+    this.keywords  = "";
+  },
+  search: function() {
+    if (this.keywords == "pat") {
+      this.customers = RESULTS;
+    }
+    else {
+      this.customers = [];
+    }
+  }
+});
+
+
+var CustomerSearchAppModule = ng.core.NgModule({
+  imports: [ ng.platformBrowser.BrowserModule, ng.forms.FormsModule ],
+  declarations: [ CustomerSearchComponent ],
+  bootstrap: [ CustomerSearchComponent ]
+})
+.Class({
+  constructor: function() {}
+});
+
+
 var AngularTestComponent = ng.core.Component({
   selector: "shine-angular-test",
   template: '\
-  <h2 *ngIf="salutation">Hello {{salutation}}!</h2> \
+  <h2 *ngIf="name">Hello {{name}}!</h2> \
   <form> \
     <div class="form-group"> \
       <label for="name">Name</label> \
       <input type="text" id="name" class="form-control" \
-             name="name" bindon-ngModel="salutation"> \
+             name="name" bindon-ngModel="name"> \
     </div> \
   </form> \
   '
 }).Class({
   constructor: function() {
-    this.salutation = null;
+    this.name = null;
   }
 });
 
+
+// AngularTestComponent to be defined...
 
 var AngularTestAppModule = ng.core.NgModule({
   imports: [ ng.platformBrowser.BrowserModule, ng.forms.FormsModule ],
@@ -56,62 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
       platformBrowserDynamic().
       bootstrapModule(AngularTestAppModule);
   }
-});
 
-
-var CustomerSearchComponent = ng.core.Component({
-  selector: "shine-customer-search",
-  template: '\
-    <header> \
-      <h1 class="h2">Customer Search</h1> \
-    </header> \
-    <section class="search-form"> \
-      <form> \
-        <div class="input-group input-group-lg"> \
-          <label for="keywords" class="sr-only">Keywords></label> \
-          <input type="text" id="keywords" name="keywords" \
-                 placeholder="First Name, Last Name, or Email Address"\
-                 class="form-control input-lg">\
-          <span class="input-group-btn"> \
-            <input type="submit" value="Find Customers"\
-                   class="btn btn-primary btn-lg">\
-          </span> \
-        </div> \
-      </form> \
-    </section> \
-    <section class="search-results"> \
-      <header> \
-        <h1 class="h3">Results</h1> \
-      </header> \
-      <ol class="list-group"> \
-        <li class="list-group-item clearfix"> \
-          <h3 class="pull-right"> \
-            <small class="text-uppercase">Joined</small> \
-            2016-01-01\
-          </h3> \
-          <h2 class="h3"> \
-            Pat Smith\
-            <small>psmith34</small> \
-          </h2> \
-          <h4>pat.smith@example.com</h4> \
-        </li> \
-      </ol> \
-    </section> \
-  '
-  }).Class({
-    constructor: function() {
-    }
-  });
-
-var CustomerSearchAppModule = ng.core.NgModule({
-  imports: [ ng.platformBrowser.BrowserModule, ng.forms.FormsModule ], declarations: [ CustomerSearchComponent ],
-  bootstrap: [ CustomerSearchComponent ]
-  })
-.Class({
-  constructor: function() {}
-});
-
-document.addEventListener('DOMContentLoaded', function() {
   if (document.getElementById("shine-customer-search")) {
     ng.platformBrowserDynamic.
       platformBrowserDynamic().
