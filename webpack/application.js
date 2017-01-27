@@ -18,7 +18,8 @@ var ng              = {
   forms:                  require("@angular/forms"),
   platformBrowser:        require("@angular/platform-browser"),
   platformBrowserDynamic: require("@angular/platform-browser-dynamic"),
-  router:                 require("@angular/router")
+  router:                 require("@angular/router"),
+  http:                   require("@angular/http")
 };
 
 var RESULTS = [
@@ -102,23 +103,35 @@ var CustomerSearchComponent = ng.core.Component({
 </section> \
   '
 }).Class({
-  constructor: function() {
-    this.customers = null;
-    this.keywords  = "";
-  },
+  constructor: [
+    ng.http.Http,
+    function(http) {
+      this.customers = null;
+      this.http      = http;
+      this.keywords  = "";
+    }
+  ],
   search: function() {
-    if (this.keywords == "pat") {
-      this.customers = RESULTS;
-    }
-    else {
-      this.customers = [];
-    }
+    var self = this;
+    self.http.get(
+      "/customers.json?keywords=" + self.keywords
+    ).subscribe(
+      function(response) {
+        self.customers = response.json().customers;
+      },
+      function(response) {
+        window.alert(response);
+      }
+    );
   }
 });
 
-
 var CustomerSearchAppModule = ng.core.NgModule({
-  imports: [ ng.platformBrowser.BrowserModule, ng.forms.FormsModule ],
+  imports: [
+    ng.platformBrowser.BrowserModule,
+    ng.forms.FormsModule,
+    ng.http.HttpModule
+  ],
   declarations: [ CustomerSearchComponent ],
   bootstrap: [ CustomerSearchComponent ]
 })
