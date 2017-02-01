@@ -3,6 +3,8 @@ var CustomerSearchComponent = require("../../webpack/CustomerSearchComponent");
 var td = require("testdouble");
 var component = null;
 
+window = td.object(["alert"]);
+
 describe("CustomerSearchComponent", function() {
 
   beforeEach(function() {
@@ -101,23 +103,26 @@ describe("CustomerSearchComponent", function() {
 
           mockHttp = td.object(["get"]);
           td.when(mockHttp.get("/customers.json?keywords=pat")).thenReturn(observable);
+          td.when(window.alert()).thenReturn();
 
           component = new CustomerSearchComponent(mockHttp);
         });
 
         it("sets the keywords to be 'pat'", function() {
-          //component.search("pat");
-          //expect(component.keywords).toBe("pat");
+          component.search("pat");
+          expect(component.keywords).toBe("pat");
         });
 
         it("leaves customers as null", function() {
-          //component.search("pat");
-          //expect(component.customers).toBe(null);
+          component.search("pat");
+          expect(component.customers).toBe(null);
         });
 
         it("alerts the user with the response message", function() {
-          //???
-
+          //TODO May be a better solution would be create a service class
+          //that handles the error notification, and inject that the same way you did with Http
+          component.search("pat");
+          td.verify(window.alert("There was an error!"));
         });
       });
     });
