@@ -60,16 +60,36 @@ var RESULTS = [
   },
 ];
 
+var CustomerAppComponent = require("./CustomerAppComponent");
 var CustomerSearchComponent = require("./CustomerSearchComponent");
+var CustomerDetailsComponent = require("./CustomerDetailsComponent");
+
+var routing = ng.router.RouterModule.forRoot(
+  [
+    {
+      path: "",
+      component: CustomerSearchComponent
+    },
+    {
+      path: ":id",
+      component: CustomerDetailsComponent
+    }
+  ]
+);
 
 var CustomerSearchAppModule = ng.core.NgModule({
   imports: [
     ng.platformBrowser.BrowserModule,
     ng.forms.FormsModule,
-    ng.http.HttpModule
+    ng.http.HttpModule,
+    routing
   ],
-  declarations: [ CustomerSearchComponent ],
-  bootstrap: [ CustomerSearchComponent ]
+  declarations: [
+    CustomerSearchComponent,
+    CustomerDetailsComponent,
+    CustomerAppComponent
+  ],
+  bootstrap: [ CustomerAppComponent ]
 })
 .Class({
   constructor: function() {}
