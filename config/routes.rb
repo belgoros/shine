@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'angular_test/index'
-
-  get 'angular_test_controller/index'
-
   devise_for :users
   root to: "dashboard#index"
 
@@ -11,6 +7,6 @@ Rails.application.routes.draw do
   get "customers/ng", to: "customers#ng"
   get "customers/ng/*angular_route", to: "customers#ng"
 
-  resources :customers, only: [:index]
+  resources :customers, only: [:index, :show]
   get "angular_test" => "angular_test#index"
 end
