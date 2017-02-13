@@ -66,6 +66,7 @@ feature "Customer Search" do
     within "section.search-form" do
       fill_in "keywords", with: "pat123@somewhere.net"
     end
+
     within "section.search-results" do
       expect(page).to have_content("Results")
       expect(page.all("ol li.list-group-item").count).to eq(4)
@@ -78,6 +79,16 @@ feature "Customer Search" do
 
       expect(page.all("ol li.list-group-item")[3]).to have_content("I.T.")
       expect(page.all("ol li.list-group-item")[3]).to have_content("Pat")
+    end
+
+    click_on "View Details...", match: :first
+    customer = Customer.find_by!(email: "pat123@somewhere.net")
+    within "section.customer-details" do
+      expect(page).to have_content(customer.id)
+      expect(page).to have_content(customer.first_name)
+      expect(page).to have_content(customer.last_name)
+      expect(page).to have_content(customer.email)
+      expect(page).to have_content(customer.username)
     end
   end
 end
