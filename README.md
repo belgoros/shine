@@ -1,24 +1,41 @@
-# README
+# Shine
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Shine is the application built when reading [Rails, Angular, Postgres and Bootstrap](https://pragprog.com/book/dcbang2/rails-angular-postgres-and-bootstrap-second-edition) by Pragmatic Programmers (since it allows our great customer service to shine through to our customers).
 
-Things you may want to cover:
+***
 
-* Ruby version
+## Used tools
 
-* System dependencies
+* Rails 5.0.1
+* Ruby 2.4.0
+* Devise
+* Angular 2
+* Postgres
+* Foreman
+* Faker
+* Webpack-rails
+* Poltergeist
+* RSpec
 
-* Configuration
+## Installation
 
-* Database creation
+* install Postgres
+* Run `bundle install`
+* Run `rails db:create`
+* Run `rails db:migrate`
+* Install `Yarn`
+* Run `yarn install`
+* Start puma and web server together with foreman: `formeman start`
+* Check if everything works as needed by navigating to `localhost:5000`
+* Signup
 
-* Database initialization
+## Customer data
 
-* How to run the test suite
+### Populate  customer data
 
-* Services (job queues, cache servers, search engines, etc.)
+To populate some test data, execute `bundle exec rails db:seed`.
+For more details, see `seeds.rb`.
 
-* Deployment instructions
+### Display customers
 
-* ...
+Navigate to `localhost:5000/customers` and type in some name to filter available customers.
