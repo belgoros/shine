@@ -6,6 +6,7 @@
 # We make no guarantees that this code is fit for any purpose.
 # Visit http://www.pragmaticprogrammer.com/titles/dcbang2 for more book information.
 #---
-class ApplicationRecord < ActiveRecord::Base
-  self.abstract_class = true
+class CustomersBillingAddress < ActiveRecord::Base
+  belongs_to :address
+  belongs_to :customer
 end
