@@ -8,7 +8,7 @@
 #---
 # Guard against re-creating customers if we already have some
 if Customer.all.count == 0
-  3.times do |i|
+  350.times do |i|
     Customer.create!(
       first_name: Faker::Name.first_name,
        last_name: Faker::Name.last_name,
