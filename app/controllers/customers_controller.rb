@@ -1,15 +1,15 @@
 class CustomersController < ApplicationController
 
-  PAGE_SIZE = 10
+  PAGE_SIZE = 10 #customers by page
 
   def ng
     @base_url = "/customers/ng"
   end
 
   def show
-    customer = Customer.find(params[:id])
+    customer_detail = CustomerDetail.find(params[:id])
     respond_to do |format|
-      format.json { render json: { customer: customer } }
+      format.json { render json: { customer: customer_detail } }
     end
   end
 
