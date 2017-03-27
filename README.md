@@ -39,3 +39,18 @@ For more details, see `seeds.rb`.
 ### Display customers
 
 Navigate to `localhost:5000/customers` and type in some name to filter available customers.
+
+### Running `customer_search_spec` (WIP)
+
+There is still an issue with populating the materialized view (see discussions with the author [here](https://forums.pragprog.com/forums/448/topics/14835#41965).
+
+So before running the feature specs, populate the test database __customer_details__ view as follows:
+```
+RAILS_ENV=test bundle exec rails dbconsole # note we are using test env
+```
+then
+```
+shine_test=# refresh materialized view customer_details;
+```
+
+Now all the test should pass.
