@@ -5,10 +5,14 @@ var ng = {
 
 var CustomerInfoComponent = ng.core.Component({
   selector: "shine-customer-info",
-  template: require("./CustomerInfoComponent.html")
+  template: require("./CustomerInfoComponent.html"),
+  inputs: [
+    "customer"
+  ]
 }).Class({
   constructor: [
     function() {
+      this.customer = null;
     }
   ]
 });
