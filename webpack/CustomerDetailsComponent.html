@@ -11,7 +11,10 @@
   <div class="row">
     <div class="col-md-6">
       <shine-customer-info bind-customer="customer"></shine-customer-info>
-      <shine-address></shine-address>
+      <shine-address
+        type="Shipping"
+        bind-address="customer.shipping_address">
+      </shine-address>
     </div>
     <div class="col-md-6">
       <article class="panel panel-default">
@@ -23,7 +26,10 @@
         <section class="panel-body">
           <shine-credit-card></shine-credit-card>
           <hr>
-          <shine-address></shine-address>
+          <shine-address
+            type="Billing"
+            bind-address="customer.billing_address">
+          </shine-address>
         </section>
       </article>
     </div>
