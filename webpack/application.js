@@ -60,9 +60,12 @@ var RESULTS = [
   },
 ];
 
-var CustomerAppComponent = require("./CustomerAppComponent");
-var CustomerSearchComponent = require("./CustomerSearchComponent");
+var CustomerAppComponent     = require("./CustomerAppComponent");
+var CustomerSearchComponent  = require("./CustomerSearchComponent");
 var CustomerDetailsComponent = require("./CustomerDetailsComponent");
+var AddressComponent         = require("./AddressComponent");
+var CreditCardComponent      = require("./CreditCardComponent");
+var CustomerInfoComponent    = require("./CustomerInfoComponent");
 
 var routing = ng.router.RouterModule.forRoot(
   [
@@ -87,6 +90,9 @@ var CustomerSearchAppModule = ng.core.NgModule({
   declarations: [
     CustomerSearchComponent,
     CustomerDetailsComponent,
+    AddressComponent,
+    CreditCardComponent,
+    CustomerInfoComponent,
     CustomerAppComponent
   ],
   bootstrap: [ CustomerAppComponent ]
