@@ -6,21 +6,22 @@
  ! We make no guarantees that this code is fit for any purpose.
  ! Visit http://www.pragmaticprogrammer.com/titles/dcbang2 for more book information.
 -->
-<article>
+<article class="credit-card-info" *ngIf="credit_card_info">
   <div class="row">
     <div class="col-md-7">
       <p class="h4">
-        ****-****-****-1234
-        <span class="label label-success">VISA</span>
+        ****-****-****-{{credit_card_info.last_four}}
+        <span class="label label-success">{{credit_card_info.type}}</span>
       </p>
       <p class="h5">
-        <label>Expires:</label> 04/19
+        <label>Expires:</label>
+        {{credit_card_info.expiration_month}}/{{credit_card_info.expiration_year}}
       </p>
     </div>
     <div class="col-md-5 text-right">
-      <button class="btn btn-lg btn-default">
-        View Details…
-      </button>
+      <a href="{{credit_card_info.link}}" class="btn btn-lg btn-default">
+        View Details...
+      </a>
     </div>
   </div>
 </article>
