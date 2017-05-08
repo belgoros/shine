@@ -8,26 +8,37 @@
     <div class="row">
       <div class="col-md-4">
         <div class="form-group">
-          <label class="sr-only" for="first-name">First Name</label>
-          <input type="text" class="form-control" name="first-name" bindon-ngModel="customer.first_name">
+          <shine-text-field
+            bind-object="customer"
+            field_name="first_name"
+            label="First Name">
+          </shine-text-field>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <label class="sr-only" for="first-name">Last Name</label>
-          <input type="text" class="form-control" name="last-name" bindon-ngModel="customer.last_name">
+          <shine-text-field
+            bind-object="customer"
+            field_name="last_name"
+            label="Last Name">
+          </shine-text-field>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="input-group">
-          <div class="input-group-addon">@</div>
-          <input type="text" class="form-control" name="username" bindon-ngModel="customer.username">
-        </div>
+        <shine-text-field
+            addon="@"
+            bind-object="customer"
+            field_name="username"
+            label="Username">
+          </shine-text-field>
       </div>
     </div>
     <div class="form-group">
-      <label class="sr-only" for="email">Email</label>
-      <input type="text" class="form-control" name="email" bindon-ngModel="customer.email">
+      <shine-text-field
+        bind-object="customer"
+        field_name="email"
+        label="E-mail">
+      </shine-text-field>
     </div>
   </section>
   <footer class="panel-footer">
