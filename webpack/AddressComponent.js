@@ -9,14 +9,21 @@ var AddressComponent = ng.core.Component({
   inputs: [
     "type",
     "address"
+  ],
+  outputs: [
+    "addressChanged"
   ]
 }).Class({
   constructor: [
     function() {
       this.type    = null;
       this.address = null;
+      this.addressChanged = new ng.core.EventEmitter();
     }
-  ]
+  ],
+  save: function(update) {
+    this.addressChanged.emit(update);
+  }
 });
 
 module.exports = AddressComponent;
