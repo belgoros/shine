@@ -39,7 +39,7 @@ describe("CustomerDetailsComponentComponent", function() {
 
       td.when(observable.map(
         td.callback(response)
-      )).thenReturn(observable
+      )).thenReturn(observable)
 
       td.when(observable.subscribe(
         td.callback(customer),
