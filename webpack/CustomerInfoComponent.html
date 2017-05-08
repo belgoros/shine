@@ -11,6 +11,7 @@
           <shine-text-field
             bind-object="customer"
             field_name="first_name"
+            on-valueChanged="save($event)"
             label="First Name">
           </shine-text-field>
         </div>
@@ -20,6 +21,7 @@
           <shine-text-field
             bind-object="customer"
             field_name="last_name"
+            on-valueChanged="save($event)"
             label="Last Name">
           </shine-text-field>
         </div>
@@ -29,6 +31,7 @@
             addon="@"
             bind-object="customer"
             field_name="username"
+            on-valueChanged="save($event)"
             label="Username">
           </shine-text-field>
       </div>
@@ -37,6 +40,7 @@
       <shine-text-field
         bind-object="customer"
         field_name="email"
+        on-valueChanged="save($event)"
         label="E-mail">
       </shine-text-field>
     </div>
