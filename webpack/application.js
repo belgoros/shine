@@ -8,6 +8,12 @@
 ***/
 require("application.css");
 require("bootstrap/dist/css/bootstrap.css");
+
+if (!window.Intl) {
+  window.Intl = require("intl");
+  require('intl/locale-data/jsonp/en.js');
+}
+
 var coreJS          = require('core-js');
 var zoneJS          = require('zone.js');
 var reflectMetadata = require('reflect-metadata');
@@ -81,6 +87,8 @@ var routing = ng.router.RouterModule.forRoot(
   ]
 );
 
+var NameCasePipe = require("./NameCasePipe");
+
 var CustomerSearchAppModule = ng.core.NgModule({
   imports: [
     ng.platformBrowser.BrowserModule,
@@ -95,6 +103,7 @@ var CustomerSearchAppModule = ng.core.NgModule({
     CreditCardComponent,
     CustomerInfoComponent,
     TextFieldComponent,
+    NameCasePipe,
     CustomerAppComponent
   ],
   bootstrap: [ CustomerAppComponent ]
