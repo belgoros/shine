@@ -16,14 +16,19 @@ var CreditCardComponent = ng.core.Component({
   template: require("./CreditCardComponent.html"),
   inputs: [
     "cardholder_id"
+  ],
+  providers: [
+    AjaxFailureHandler
   ]
 }).Class({
   constructor: [
     ng.http.Http,
-    function(http) {
+    AjaxFailureHandler,
+    function(http,ajaxFailureHandler) {
       this.cardholder_id = null;
       this.credit_card_info = null;
       this.http = http;
+      this.ajaxFailureHandler = ajaxFailureHandler;
     }
   ],
   ngOnChanges: function(changes) {
