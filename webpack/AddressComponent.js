@@ -8,7 +8,8 @@ var AddressComponent = ng.core.Component({
   template: require("./AddressComponent.html"),
   inputs: [
     "type",
-    "address"
+    "address",
+    "icon"
   ],
   outputs: [
     "addressChanged"
@@ -18,6 +19,7 @@ var AddressComponent = ng.core.Component({
     function() {
       this.type    = null;
       this.address = null;
+      this.icon = "envelope";
       this.addressChanged = new ng.core.EventEmitter();
     }
   ],
