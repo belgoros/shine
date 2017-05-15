@@ -10,6 +10,7 @@ var ng = {
   core:   require("@angular/core"),
   http:   require("@angular/http"),
 };
+var AjaxFailureHandler = require("./AjaxFailureHandler");
 
 var CreditCardComponent = ng.core.Component({
   selector: "shine-credit-card",
@@ -50,9 +51,7 @@ var CreditCardComponent = ng.core.Component({
         function(response) {
           self.credit_card_info = response.json().credit_card_info;
         },
-        function(response) {
-          window.alert(response);
-        }
+        this.ajaxFailureHandler.handler()
     );
   }
 });
