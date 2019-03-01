@@ -25,7 +25,7 @@ Shine is the application built when reading [Rails, Angular, Postgres and Bootst
 * Run `rails db:migrate`
 * Install `Yarn`
 * Run `yarn install`
-* Start puma and web server together with foreman: `formeman start`
+* Start puma and web server together with foreman: `foreman start`
 * Check if everything works as needed by navigating to `localhost:5000`
 * Signup
 * Navigate to `localhost:5000/customers` and type in some customer's name to search in. You should see the macthing results.

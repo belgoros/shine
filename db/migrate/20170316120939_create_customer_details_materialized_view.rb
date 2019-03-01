@@ -1,4 +1,4 @@
-class CreateCustomerDetailsMaterializedView < ActiveRecord::Migration[5.0]
+class CreateCustomerDetailsMaterializedView < ActiveRecord::Migration[5.2]
   def up
     execute %{
       CREATE MATERIALIZED VIEW customer_details AS

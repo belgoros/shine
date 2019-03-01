@@ -6,7 +6,7 @@
 # We make no guarantees that this code is fit for any purpose.
 # Visit http://www.pragmaticprogrammer.com/titles/dcbang2 for more book information.
 #---
-class AddAddresses < ActiveRecord::Migration[5.0]
+class AddAddresses < ActiveRecord::Migration[5.2]
   def change
     create_table :states do |t|
       t.string     :code, size: 2, null: false

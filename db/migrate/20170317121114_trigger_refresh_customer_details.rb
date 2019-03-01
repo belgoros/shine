@@ -1,4 +1,4 @@
-class TriggerRefreshCustomerDetails < ActiveRecord::Migration[5.0]
+class TriggerRefreshCustomerDetails < ActiveRecord::Migration[5.2]
   def up
     execute %{
       CREATE OR REPLACE FUNCTION

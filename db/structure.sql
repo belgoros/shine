@@ -524,7 +524,7 @@ CREATE TRIGGER refresh_customer_details AFTER INSERT OR DELETE OR UPDATE ON addr
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES
+INSERT INTO "schema_migrations" (version) VALUES
 ('20170117164103'),
 ('20170119162841'),
 ('20170124093305'),
