@@ -6,16 +6,16 @@ Shine is the application built when reading [Rails, Angular, Postgres and Bootst
 
 ## Used tools
 
-* Rails 5.0.1
-* Ruby 2.4.0
-* Devise
 * Angular 2
-* Postgres
-* Foreman
+* Devise
 * Faker
-* Webpack-rails
+* Foreman
 * Poltergeist
+* Postgres
+* Rails 5.0.1
 * RSpec
+* Ruby 2.6.3
+* Webpack-rails
 
 ## Installation
 
