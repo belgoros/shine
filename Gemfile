@@ -15,7 +15,7 @@ gem 'foreman'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg', '~> 1.1', '>= 1.1.4'
-gem 'puma', '~> 4.1', '>= 4.1.1'
+gem 'puma', '~> 4.3'
 gem 'rails', '~> 5.0.1'
 gem 'sass-rails', '~> 5.0'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
